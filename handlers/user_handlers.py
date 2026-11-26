@@ -20,6 +20,11 @@ async def cmd_help(message: Message):
         "в котором эти данные будут заменены на [PERSON]/[PHONE]/[EMAIL]/[ADDRESS] соответственно.")
 
 
+@router.message(F.text)
+async def censor_text(message: Message):
+    await message.answer(message.text)
+
+
 @router.message(F.document)
-async def on_document(message: Message):
+async def censor_document(message: Message):
     await message.answer(f"Файл: {message.document.file_name}")
